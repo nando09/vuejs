@@ -74,3 +74,25 @@
 <!--	v-model		=>	Traz informações conforme vai escrevendo	-->
 <!--	v-bind		=>	Podendo ultilizar em qualquer atributo HTML que tambem posso atilizar com somente ":"	-->
 <!--	v-on		=>	Onde traz os eventos do usuario	podendo usar o @ como no v-on.php-->
+
+
+
+<!--	*AJAX* -->
+<!--
+	// Pegando valores json de uma API via GET
+	this.$http.get(url).then(function(retorno){
+		this.users = retorno.body;
+	});
+-->
+<!--
+	// Enviando valores json de uma API via POST
+	this.$http.post(url).then(function(retorno){
+		this.users = retorno.body;
+	});
+-->
+<!--
+	// Deletar valores json de uma API via DELETE
+	this.$http.delete(url).then(function(retorno){
+		this.users = retorno.body;
+	});
+-->

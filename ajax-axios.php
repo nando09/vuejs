@@ -19,6 +19,7 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script type="text/javascript">
 		Vue.component('menu-bar', {
 			template: "#menu",
@@ -30,18 +31,32 @@
 				getUsers(){
 					this.loader.users = true;
 					var url = 'http://jsonplaceholder.typicode.com/users';
-					this.$http.get(url)
+					var vm = this;
+
+					axios.get(url)
 						// Ajax, quando a consulta terminar usar uma ação .then()
 						.then(function(retorno){
-							this.users = retorno.body;
+							vm.users = retorno.data;
 						}, function(error){
-							this.response.status = "error";
-							console.log(error);
+							vm.response.status = "error";
 						})
 						// Quando o ajax terminar faca isso ...
 						.finally(function(){
-							this.loader.users = false;
+							vm.loader.users = false;
 						});
+
+					// this.$http.get(url)
+					// 	// Ajax, quando a consulta terminar usar uma ação .then()
+					// 	.then(function(retorno){
+					// 		this.users = retorno.body;
+					// 	}, function(error){
+					// 		this.response.status = "error";
+					// 		console.log(error);
+					// 	})
+					// 	// Quando o ajax terminar faca isso ...
+					// 	.finally(function(){
+					// 		this.loader.users = false;
+					// 	});
 				}
 			}
 		}
